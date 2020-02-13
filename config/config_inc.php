@@ -1,84 +1,60 @@
 <?php
-# MantisBT - A PHP based bugtracking system
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 
-# MantisBT is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 2 of the License, or
-# (at your option) any later version.
-#
-# MantisBT is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with MantisBT.  If not, see <http://www.gnu.org/licenses/>.
-
-/**
- * @package MantisBT
- * @copyright Copyright (C) 2000 - 2002  Kenzaburo Ito - kenito@300baud.org
- * @copyright Copyright (C) 2002 MantisBT Team - mantisbt-dev@lists.sourceforge.net
- * @link http://www.mantisbt.org
- */
-
-# This sample file contains the essential files that you MUST
-# configure to your specific settings.  You may override settings
-# from config_defaults_inc.php by uncommenting the config option
-# and setting its value in this file.
-
-# Rename this file to config_inc.php after configuration.
-
-# In general the value OFF means the feature is disabled and ON means the
-# feature is enabled.  Any other cases will have an explanation.
-
-# Look in http://www.mantisbt.org/docs/ or config_defaults_inc.php for more
-# detailed comments.
-
-# --- Database Configuration ---
-$g_hostname      = 'localhost';
-$g_db_username   = 'mantisdbuser';
-$g_db_password   = '';
-$g_database_name = 'bugtracker';
-$g_db_type       = 'mysqli';
-
-# --- Security ---
-$g_crypto_master_salt = '';	#  Random string of at least 16 chars, unique to the installation
-
-# --- Anonymous Access / Signup ---
-$g_allow_signup				= ON;
-$g_allow_anonymous_login	= OFF;
-$g_anonymous_account		= '';
-
-# --- Email Configuration ---
-$g_phpMailer_method		= PHPMAILER_METHOD_MAIL; # or PHPMAILER_METHOD_SMTP, PHPMAILER_METHOD_SENDMAIL
-$g_smtp_host			= 'localhost';			# used with PHPMAILER_METHOD_SMTP
-$g_smtp_username		= '';					# used with PHPMAILER_METHOD_SMTP
-$g_smtp_password		= '';					# used with PHPMAILER_METHOD_SMTP
-$g_webmaster_email      = 'webmaster@example.com';
-$g_from_email           = 'noreply@example.com';	# the "From: " field in emails
-$g_return_path_email    = 'admin@example.com';	# the return address for bounced mail
-# $g_from_name			= 'Mantis Bug Tracker';
-# $g_email_receive_own	= OFF;
-# $g_email_send_using_cronjob = OFF;
-
-# --- Attachments / File Uploads ---
-# $g_allow_file_upload	= ON;
-# $g_file_upload_method	= DATABASE; # or DISK
-# $g_absolute_path_default_upload_folder = ''; # used with DISK, must contain trailing \ or /.
-# $g_max_file_size		= 5000000;	# in bytes
-# $g_preview_attachments_inline_max_size = 256 * 1024;
-# $g_allowed_files		= '';		# extensions comma separated, e.g. 'php,html,java,exe,pl'
-# $g_disallowed_files		= '';		# extensions comma separated
-
-
-# --- Branding ---
-# $g_window_title			= 'MantisBT';
-# $g_logo_image			= 'images/mantis_logo.png';
-# $g_favicon_image		= 'images/favicon.ico';
-
-# --- Real names ---
-# $g_show_realname = OFF;
-# $g_show_user_realname_threshold = NOBODY;	# Set to access level (e.g. VIEWER, REPORTER, DEVELOPER, MANAGER, etc)
-
-# --- Others ---
-# $g_default_home_page = 'my_view_page.php';	# Set to name of page to go to after login
+$g_hostname = 'localhost';
+$g_db_type = 'mysqli';
+$g_database_name = 'hr4u';
+$g_db_username = 'root';
+$g_db_password = 'password';
+$g_db_table_plugin_prefix = 'table';
+$g_default_timezone = 'Africa/Abidjan';
+$g_crypto_master_salt = 'f2okp//uxnS4RyJyhcA0BycXpzuvtqAN1ZFN/ZOmq6Q=';
+$g_phpMailer_method = PHPMAILER_METHOD_SMTP;
+// $g_smtp_host = 'smtp.mailtrap.io';            # used with
+$g_smtp_host = 'mail.iprosonic.com';
+$g_smtp_username = 'support@iprosonic.com';
+$g_smtp_password = 'abcd_1234';
+$g_stop_on_errors = ON;
+$g_smtp_connection_mode = '';
+$g_smtp_port = 25;
+$g_webmaster_email = 'hemant@iprosonic.com';
+$g_administrator_email = 'hemant@iprosonic.com';
+$g_from_email = 'support@iprosonic.com';    # the "From: " field in emails
+$g_return_path_email = 'hem587ant@gmail.com';    # the return address for bounced mail
+$g_enable_email_notification = ON;
+$g_email_recieve_own = ON;
+$g_email_login_enabled = ON;
+$g_antispam_max_event_count = 0;
+$g_status_enum_string = '10:new,50:assigned,90:closed';
+$g_file_upload_method = DISK;
+//$g_absolute_path_default_upload_folder = '/var/www/html/mantisbt/attachments/';
+$g_ticket_status = 'closed';
+$g_bug_report_page_fields = array(
+    'category_id',
+    'handler',
+    'priority',
+    'summary',
+    'description',
+    'additional_info',
+    'attachments',
+    'due_date',
+);
+$g_history_order = 'DESC';
+$g_log_level = LOG_ALL & LOG_DATABASE;
+//$g_log_destination = 'file:/var/www/html/mantisbt/log/mantis.log';
+$g_show_attachments = ON;
+$g_preset_duedate = ON;
+$g_display_errors = array(
+    E_WARNING => 'halt',
+    E_NOTICE => 'halt',
+    E_ERROR => 'halt',
+    E_USER_ERROR => 'halt',
+    E_WARNING => 'inline',
+    E_USER_WARNING => 'inline',
+    E_USER_NOTICE => 'halt'
+);
+$g_duedate_days_default = 'today';
+$g_show_detailed_errors = ON;
+$g_notify_new_user_created_threshold_min = 91;
+?>
