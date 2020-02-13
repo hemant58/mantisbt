@@ -711,8 +711,14 @@ class BugData {
 		$t_fields[] = $this->summary;
 		$t_fields[] = $this->sponsorship_total;
 		$t_fields[] = (bool)$this->sticky;
-		$t_fields[] = $this->due_date;
-		$t_fields[] = $this->id;
+//		$t_fields[] = $this->due_date;
+        if (($this->due_date=="1") or ($t_old_data->status) == 10) {
+            $t_fields[] = setDueDays();
+        } else {
+            $t_fields[] = $this->due_date;
+        }
+
+        $t_fields[] = $this->id;
 
 		db_query( $t_query, $t_fields );
 
